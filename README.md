@@ -66,9 +66,32 @@ public class MyParameterizedTestCase {
 }
 ```
 
+You can find a fully working example in the tests of this project: [ExampleParameterizedSuite](https://github.com/PeterWippermann/parameterized-suite/blob/master/src/test/java/com/github/peterwippermann/junit4/parameterizedsuite/ExampleParameterizedSuite.java)
+
 ## Dependency setup
+Add the following dependency declaration of *parameterized-suite* together with *JUnit 4*.
 ### Maven
+```xml
+<dependency>
+  <groupId>com.github.peterwippermann.junit4</groupId>
+  <artifactId>parameterized-suite</artifactId>
+  <version>1.0.0</version>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.12</version>
+  <scope>test</scope>
+</dependency>
+```
 ### Gradle
+````groovy
+dependencies {
+    runtime 'junit:junit:4.12',
+            'com.github.peterwippermann.junit4:parameterized-suite:1.0.0'
+}
+```
 
 ## License
 
