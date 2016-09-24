@@ -1,0 +1,79 @@
+apply plugin: 'java'
+apply plugin: 'maven' // The newer "maven-publish" plugin proved to be unusable as it doesn't support signing... 
+apply plugin: 'signing'
+
+group = 'com.github.peterwippermann.junit4'
+archivesBaseName = 'parameterized-suite'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+   compile 'junit:junit:[4.12,5.0)'
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+
+uploadArchives {
+  
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+      
+      pom.project {
+			name 'Parameterized Suite for JUnit 4'
+	        packaging 'jar'
+	        description 'JUnit 4 provides the commonly known Runners "Suite" and "Parameterized". However, as of today there is no Runner implementation that combines the features of both. This library provides a custom Runner for this purpose.'
+	        url 'https://github.com/PeterWippermann/parameterized-suite'
+	
+	        scm {
+	          connection 'scm:git:git://github.com/PeterWippermann/parameterized-suite.git'
+	          developerConnection 'scm:git:ssh://github.com:PeterWippermann/parameterized-suite.git'
+	          url 'https://github.com/PeterWippermann/parameterized-suite'
+	        }
+	
+	        licenses {
+	          license {
+	            name 'Eclipse Public License 1.0'
+	            url 'http://www.eclipse.org/legal/epl-v10.html'
+	          }
+	        }
+	
+	        developers {
+	          developer {
+	            id 'PeterWippermann'
+	            name 'Peter Wippermann'
+	            email 'oss-pepe@gmx.net'
+	          }
+	        }
+   		 }
+    }
+  }
+ }
