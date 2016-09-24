@@ -1,7 +1,6 @@
 *.class
 build/
 bin/
-.settings/
 .gradle/
 
 # Mobile Tools for Java (J2ME)
