@@ -11,6 +11,9 @@ It provides a new Runner `ParameterizedSuite` for JUnit 4 that combines the feat
 - **Bonus feature**: Annotations like `@Before`, `@After`,`@ClassRule` & `@Rule` are also available for test suites now!
   - In standard JUnit 4 test suites have not been instantiated (as opposed to normal test cases). That's why the annotations mentioned above were not available.
   - `ParameterizedSuite` gives you full access to these annotations.
+  
+## Use cases
+* In Selenium, run your te
 
 ## Usage
 This is how a parameterized test suite looks like:
