@@ -1,5 +1,5 @@
 # Parameterized Suite
-This library allows you to **define parameters for a test suite**.
+This library enables you to **define parameters for a test suite**.
 
 It provides a new Runner `ParameterizedSuite` for JUnit 4 that combines the features of `Suite` and `Parameterized`. The new Runner can be used as a drop-in replacement for `Suite`.
 
