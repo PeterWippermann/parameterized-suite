@@ -14,7 +14,8 @@ It provides a new Runner `ParameterizedSuite` for JUnit 4 that combines the feat
   
 ## Use cases
 * In Selenium, run your automated test with all the browsers you want to support! Just make your test cases accept parameters of type `WebDriver`.
-  * Nice detail: You can reuse your browser between the test cases! Loaded website and cookies will remain active when the parameter object is passed around.
+  * Nice detail: You can reuse your browser instance between the test cases! Loaded website and cookies will remain active when the parameter object is passed around.
+  * And how to setup and teardown the browser? Use the `@ClassRule` or `@Rule` annotations! `ParameterizedSuite` enables you to use these features of JUnit also on suite-level!
 
 ## Usage
 This is how a parameterized test suite looks like:
