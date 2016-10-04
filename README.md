@@ -93,7 +93,7 @@ Add the following dependency declaration of *parameterized-suite* together with 
 ### Gradle
 ````groovy
 dependencies {
-    runtime 'junit:junit:4.12',
+    testCompile 'junit:junit:4.12',
             'com.github.peterwippermann.junit4:parameterized-suite:1.0.0'
 }
 ```
