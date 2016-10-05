@@ -98,6 +98,9 @@ dependencies {
 }
 ```
 
+## Background info
+Before I made this library publicly available, I blogged about [Implementing a parameterized test suite in JUnit](https://devallthethings.wordpress.com/2016/07/02/implementing-a-parameterized-test-suite-in-junit/).
+
 ## License
 This library is [licensed under EPL - version 1](LICENSE-parameterized-suite.txt).  
 The package `com.github.peterwippermann.junit4.parameterizedsuite.util` also contains source from JUnit 4. See details in the [package info](src/main/java/com/github/peterwippermann/junit4/parameterizedsuite/util/package-info.java) and the [license file](LICENSE-junit.txt). 
