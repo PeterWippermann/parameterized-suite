@@ -1,5 +1,7 @@
 ---
 language: java
 
+sudo: required # To remedy: "./gradlew: Permission denied" error
+
 jdk:
   - oraclejdk7
