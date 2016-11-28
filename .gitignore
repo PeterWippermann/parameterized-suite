@@ -7,7 +7,7 @@ bin/
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar # allow Gradle wrapper to be stored as well
 *.war
 *.ear
 
