@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/PeterWippermann/parameterized-suite.svg?branch=master)](https://travis-ci.org/PeterWippermann/parameterized-suite)
+
 # Parameterized Suite
 This library enables you to **define parameters for a test suite**.
 
