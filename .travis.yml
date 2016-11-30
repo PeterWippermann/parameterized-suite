@@ -5,6 +5,7 @@ sudo: required # To remedy: "./gradlew: Permission denied" error
 
 jdk:
   - oraclejdk7
-  
-script:
-  - ./gradlew build -x signArchives
+
+install: ./gradlew assemble -x signArchives
+
+script: ./gradlew check -x signArchives
