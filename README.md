@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/PeterWippermann/parameterized-suite.svg?branch=master)](https://travis-ci.org/PeterWippermann/parameterized-suite) [![Maven Central](https://img.shields.io/maven-central/v/com.github.peterwippermann.junit4/parameterized-suite.svg)](http://search.maven.org/#artifactdetails%7Ccom.github.peterwippermann.junit4%7Cparameterized-suite%7C1.0.0%7Cjar)
+[![Build Status](https://travis-ci.org/PeterWippermann/parameterized-suite.svg?branch=master)](https://travis-ci.org/PeterWippermann/parameterized-suite) [![Maven Central](https://img.shields.io/maven-central/v/com.github.peterwippermann.junit4/parameterized-suite.svg)](https://mvnrepository.com/artifact/com.github.peterwippermann.junit4/parameterized-suite)
 
 # Parameterized Suite
 This library enables you to **define parameters for a test suite**.
