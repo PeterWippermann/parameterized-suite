@@ -51,7 +51,7 @@ public class DisplayNamesTest {
 			if (ParameterContext.isParameterSet()) {
 				return Collections.singletonList(ParameterContext.getParameter(Object[].class));
 			}
-			throw new RuntimeException("This test shouldn't be run outside of a ParameterizedSuite!");
+			return Collections.singletonList(new Object[] {"ignorable"});
 		}
 
 		@Test
