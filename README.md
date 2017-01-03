@@ -49,7 +49,7 @@ Your test case reads the current parameter from the `ParameterContext`:
 @RunWith(Parameterized.class)
 public class MyParameterizedTestCase {
     
-    @Parameters(name = "Parameters are {0} and {1}")
+    @Parameters(name = "Parameters are {0} and {1}") // Always define a name here! (See "known issues" section)
     public static Iterable<Object[]> params() {
         if (ParameterContext.isParameterSet()) {
             return Collections.singletonList(ParameterContext.getParameter(Object[].class));
@@ -101,6 +101,12 @@ dependencies {
             'com.github.peterwippermann.junit4:parameterized-suite:1.0.0'
 }
 ```
+
+## Known issues
+### Define a name for the @Parameters method in your test cases
+Define a name like the following: `@Parameters(name = "Parameter set #{index} - {0};{1}")`.  
+This makes your test cases not only more readable, but it also prevents you from an [Eclipse bug](https://bugs.eclipse.org/bugs/show_bug.cgi?id=172256)!  
+When the same test with the same name is executed twice, the results will only be attributed to the last node of that test in the test execution hierarchy tree - leaving the other nodes of the same test stale. By **defining a unique name** you can circumvent this bug. Therefore I suggest to include a String representation of your current parameters (e.g. `{0};{1}` for two parameters).
 
 ## Background info
 Before I made this library publicly available, I blogged about [Implementing a parameterized test suite in JUnit](https://devallthethings.wordpress.com/2016/07/02/implementing-a-parameterized-test-suite-in-junit/).
