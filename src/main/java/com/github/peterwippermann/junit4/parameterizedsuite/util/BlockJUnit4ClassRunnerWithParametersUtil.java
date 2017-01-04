@@ -11,6 +11,7 @@ import org.junit.internal.runners.model.ReflectiveCallable;
 import org.junit.internal.runners.statements.Fail;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.model.FrameworkField;
@@ -116,6 +117,8 @@ public class BlockJUnit4ClassRunnerWithParametersUtil {
      * Therefore the test class will be instantiated and parameters will be injected with the same
      * mechanism as in {@link Parameterized}.
      * 
+     * Implementation has been extracted from BlockJUnit4ClassRunner#methodBlock(FrameworkMethod).
+     * 
      * @param baseStatementWithChildren - A {@link Statement} that includes execution of the test's
      *        children
      * @param testClass - The {@link TestClass} of the test.
@@ -124,8 +127,8 @@ public class BlockJUnit4ClassRunnerWithParametersUtil {
      * @param parametersToInject - The parameters will be injected in attributes annotated with
      *        {@link Parameter} or passed to the constructor otherwise.
      * 
-     * @see {@link BlockJUnit4ClassRunner#methodBlock(FrameworkMethod)}
-     * @see {@link BlockJUnit4ClassRunnerWithParameters#createTest()}
+     * @see BlockJUnit4ClassRunnerWithParameters#createTest()
+     * @see BlockJUnit4ClassRunner#methodBlock(FrameworkMethod)
      */
     public static Statement buildStatementWithTestRules(Statement baseStatementWithChildren, final TestClass testClass, Description description,
             final Object[] parametersToInject) {

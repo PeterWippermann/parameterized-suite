@@ -15,7 +15,7 @@ import org.junit.runners.model.InitializationError;
 public class SuiteUtil {
 
     /**
-     * @see Suite#getAnnotatedClasses()
+     * @see Suite#getAnnotatedClasses(Class)
      */
     public static Class<?>[] getSuiteClasses(Class<?> klass) throws InitializationError {
         SuiteClasses annotation = klass.getAnnotation(SuiteClasses.class);

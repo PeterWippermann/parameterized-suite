@@ -23,7 +23,7 @@ import com.github.peterwippermann.junit4.parameterizedsuite.util.SuiteUtil;
 
 /**
  * A replacement for {@link Suite} that combines the features of {@link Suite} with
- * {@link Parameterized}.<br/>
+ * {@link Parameterized}.<br>
  * Moreover, as an additional feature: If the suite test class is annotated with {@link TestRule},
  * {@link ClassRule}, {@link Before} or {@link After}, these will be evaluated as well.
  * <p>
@@ -101,8 +101,7 @@ public class ParameterizedSuite extends ParentRunner<Runner> {
     }
 
     /**
-     * Builds the {@link Runner}s the same way as in {@link Suite#Suite(RunnerBuilder, Class<?>,
-     * Class<?>[])}
+     * Builds the {@link Runner}s the same way as in {@link Suite#Suite(RunnerBuilder, Class[])}
      * 
      * @param suiteTestClass
      * @param runnerBuilder
@@ -127,7 +126,7 @@ public class ParameterizedSuite extends ParentRunner<Runner> {
      * @param runnerBuilder
      * @param suiteChildClasses
      * @param parameters
-     * @param testClassNamePattern - A pattern that will be used to create a name for the forked
+     * @param parametersNamePattern - A pattern that will be used to create a name for the forked
      *        test executions. Placeholders for index and parameters will be replaced.
      * @return
      * @throws InitializationError

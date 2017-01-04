@@ -4,7 +4,7 @@ apply plugin: 'signing'
 
 group = 'com.github.peterwippermann.junit4'
 archivesBaseName = 'parameterized-suite'
-version = '1.0.0'
+version = '1.0.1'
 
 repositories {
     mavenCentral()
