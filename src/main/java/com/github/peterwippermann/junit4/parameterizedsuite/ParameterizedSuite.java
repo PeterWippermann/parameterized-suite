@@ -28,7 +28,7 @@ import com.github.peterwippermann.junit4.parameterizedsuite.util.SuiteUtil;
  * {@link ClassRule}, {@link Before} or {@link After}, these will be evaluated as well.
  * <p>
  * 
- * This implementation oesn't extend {@link Suite}, because {@link Suite} doesn't allow to extend
+ * This implementation doesn't extend {@link Suite}, because {@link Suite} doesn't allow to extend
  * the mechanism of determining the child {@link Runner}s.
  * 
  * @author Peter Wippermann
