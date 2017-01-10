@@ -108,6 +108,11 @@ Define a name like the following: `@Parameters(name = "Parameter set #{index} - 
 This makes your test cases not only more readable, but it also prevents you from an [Eclipse bug](https://bugs.eclipse.org/bugs/show_bug.cgi?id=172256)!  
 When the same test with the same name is executed twice, the results will only be attributed to the last node of that test in the test execution hierarchy tree - leaving the other nodes of the same test stale. By **defining a unique name** you can circumvent this bug. Therefore I suggest to include a String representation of your current parameters (e.g. `{0};{1}` for two parameters).
 
+### Requested parameter type for ParameterContext.get() always has to be Object[]
+When accessing the `ParameterContext` in your `@Parameterized` test you always have to request the parameter as type `Object[]`. Like this: `ParameterContext.getParameter(Object[].class)`.  
+This also applies if you had set the `ParameterContext` with another type, since as of now it is being transformed internally.  
+This is a bug and will be fixed.
+
 ## Background info
 Before I made this library publicly available, I blogged about [Implementing a parameterized test suite in JUnit](https://devallthethings.wordpress.com/2016/07/02/implementing-a-parameterized-test-suite-in-junit/).
 
