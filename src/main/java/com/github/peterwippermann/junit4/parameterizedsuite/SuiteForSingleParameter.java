@@ -20,7 +20,7 @@ public final class SuiteForSingleParameter extends Suite {
 	private Object[] singleParameter;
 
 	public SuiteForSingleParameter(RunnerBuilder runnerBuilder, Class<?> forkingSuiteClass, Class<?>[] classes,
-			String suiteName, Object[] singleParameter) throws InitializationError {
+			String suiteName, Object[] parameter) throws InitializationError {
 		/*
 		 * By passing "forkingSuiteClass" (which is the forking
 		 * ParameterizedSuite), the JUnit framework will build the internal
@@ -30,7 +30,7 @@ public final class SuiteForSingleParameter extends Suite {
 		super(runnerBuilder, forkingSuiteClass, classes);
 
 		this.suiteName = suiteName;
-		this.singleParameter = singleParameter;
+		this.singleParameter = parameter;
 	}
 
 	protected String getName() {
@@ -39,10 +39,10 @@ public final class SuiteForSingleParameter extends Suite {
 
 	protected Statement classBlock(RunNotifier notifier) {
 		return BlockJUnit4ClassRunnerWithParametersUtil.buildStatementWithTestRules(childrenInvoker(notifier),
-				getTestClass(), getDescription(), getActiveParameter());
+				getTestClass(), getDescription(), singleParameter);
 	}
 
-	protected Object[] getActiveParameter() {
-		return this.singleParameter;
-	}
+//	protected Object[] getActiveParameter() {
+//		return this.singleParameter;
+//	}
 }

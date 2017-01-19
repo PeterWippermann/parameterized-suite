@@ -80,8 +80,16 @@ public class ParameterizedUtil {
 	 *      Object)
 	 */
 	public static Object[] normalizeParameter(Object singleParameterAsArrayOrObject) {
-		return (singleParameterAsArrayOrObject instanceof Object[]) ? (Object[]) singleParameterAsArrayOrObject
-				: new Object[] { singleParameterAsArrayOrObject };
+		return isParameterAnArray(singleParameterAsArrayOrObject) ? (Object[]) singleParameterAsArrayOrObject
+				: convertSingleParameterToArray(singleParameterAsArrayOrObject);
+	}
+
+	public static Object[] convertSingleParameterToArray(Object singleParameter) {
+		return new Object[] { singleParameter };
+	}
+
+	public static boolean isParameterAnArray(Object singleParameterAsArrayOrObject) {
+		return singleParameterAsArrayOrObject instanceof Object[];
 	}
 
 	/**

@@ -13,7 +13,6 @@ import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.Statement;
 import org.junit.runners.model.TestClass;
@@ -71,7 +70,7 @@ public class BlockJUnit4ClassRunnerWithParametersUtil {
         Object testClassInstance = testClass.getJavaClass().newInstance();
         for (FrameworkField each : annotatedFieldsByParameter) {
             Field field = each.getField();
-            Parameter annotation = field.getAnnotation(Parameter.class);
+            Parameterized.Parameter annotation = field.getAnnotation(Parameterized.Parameter.class);
             int index = annotation.value();
             try {
                 field.set(testClassInstance, parameters[index]);
@@ -89,7 +88,7 @@ public class BlockJUnit4ClassRunnerWithParametersUtil {
      * @see BlockJUnit4ClassRunnerWithParameters#getAnnotatedFieldsByParameter()
      */
     public static List<FrameworkField> getAnnotatedFieldsByParameter(TestClass testClass) {
-        return testClass.getAnnotatedFields(Parameter.class);
+        return testClass.getAnnotatedFields(Parameterized.Parameter.class);
     }
 
     /**
@@ -124,19 +123,19 @@ public class BlockJUnit4ClassRunnerWithParametersUtil {
      * @param testClass - The {@link TestClass} of the test.
      * @param description - The {@link Description} will be passed to the {@link Rule}s and
      *        {@link ClassRule}s.
-     * @param parametersToInject - The parameters will be injected in attributes annotated with
+     * @param singleParameter - The parameters will be injected in attributes annotated with
      *        {@link Parameter} or passed to the constructor otherwise.
      * 
      * @see BlockJUnit4ClassRunnerWithParameters#createTest()
      * @see BlockJUnit4ClassRunner#methodBlock(FrameworkMethod)
      */
     public static Statement buildStatementWithTestRules(Statement baseStatementWithChildren, final TestClass testClass, Description description,
-            final Object[] parametersToInject) {
+            final Object[] singleParameter) {
         final Object test;
         try {
             test = new ReflectiveCallable() {
                 protected Object runReflectiveCall() throws Throwable {
-                    return createInstanceOfParameterizedTest(testClass, parametersToInject);
+                    return createInstanceOfParameterizedTest(testClass, singleParameter);
                 }
             }.run();
         } catch (Throwable e) {

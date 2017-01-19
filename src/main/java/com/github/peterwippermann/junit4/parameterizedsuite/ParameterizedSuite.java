@@ -17,6 +17,7 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.RunnerBuilder;
 import org.junit.runners.model.Statement;
 
+import com.github.peterwippermann.junit4.parameterizedsuite.parameter.Parameter;
 import com.github.peterwippermann.junit4.parameterizedsuite.util.BlockJUnit4ClassRunnerWithParametersUtil;
 import com.github.peterwippermann.junit4.parameterizedsuite.util.ParameterizedUtil;
 import com.github.peterwippermann.junit4.parameterizedsuite.util.SuiteUtil;
@@ -72,7 +73,7 @@ public class ParameterizedSuite extends ParentRunner<Runner> {
         } else {
             // Forking has already been done by a ParameterizedSuite that is superior in the test
             // hierarchy. Create Runners for children like a normal Suite would do.
-            currentlyActiveParameter = ParameterContext.getParameter(PARAMETER_TYPE);
+            currentlyActiveParameter = ParameterContext.getParameterAsArray();
 
             this.runners = createRunnersForChildTestClasses(suiteTestClass, runnerBuilder, childTestClasses);
         }
@@ -93,12 +94,12 @@ public class ParameterizedSuite extends ParentRunner<Runner> {
             return statementWithChildren;
         }
         return BlockJUnit4ClassRunnerWithParametersUtil.buildStatementWithTestRules(statementWithChildren, getTestClass(), getDescription(),
-                getCurrentlyActiveParameter());
+                currentlyActiveParameter);
     }
 
-    protected Object[] getCurrentlyActiveParameter() {
-        return currentlyActiveParameter;
-    }
+//    protected Object[] getCurrentlyActiveParameter() {
+//        return currentlyActiveParameter;
+//    }
 
     /**
      * Builds the {@link Runner}s the same way as in {@link Suite#Suite(RunnerBuilder, Class[])}
@@ -136,10 +137,10 @@ public class ParameterizedSuite extends ParentRunner<Runner> {
         List<Runner> runners = new LinkedList<Runner>();
 
         int parameterIndex = 0;
-        for (Object singleParameter : parameters) {
-            Object[] normalizedParameter = ParameterizedUtil.normalizeParameter(singleParameter);
-            String nameForSingleParameterSuite = ParameterizedUtil.buildTestName(parametersNamePattern, parameterIndex++, normalizedParameter);
-            runners.add(setContextAndBuildSuiteForSingleParameter(suiteTestClass, runnerBuilder, suiteChildClasses, normalizedParameter,
+        for (Object singleParameterRaw : parameters) {
+        	Parameter parameter = Parameter.from(singleParameterRaw);
+            String nameForSingleParameterSuite = ParameterizedUtil.buildTestName(parametersNamePattern, parameterIndex++, parameter.asNormalized());
+            runners.add(setContextAndBuildSuiteForSingleParameter(suiteTestClass, runnerBuilder, suiteChildClasses, parameter,
                     nameForSingleParameterSuite));
         }
         return runners;
@@ -147,10 +148,10 @@ public class ParameterizedSuite extends ParentRunner<Runner> {
 
 
     private SuiteForSingleParameter setContextAndBuildSuiteForSingleParameter(Class<?> suiteTestClass, RunnerBuilder runnerBuilder,
-            Class<?>[] suiteChildClasses, Object[] singleParameter, String suiteName) throws InitializationError {
+            Class<?>[] suiteChildClasses, Parameter parameter, String suiteName) throws InitializationError {
         try {
-            ParameterContext.setParameter(singleParameter);
-            return new SuiteForSingleParameter(runnerBuilder, suiteTestClass, suiteChildClasses, suiteName, singleParameter);
+            ParameterContext.setParameter(parameter);
+            return new SuiteForSingleParameter(runnerBuilder, suiteTestClass, suiteChildClasses, suiteName, parameter.asNormalized());
         } finally {
             ParameterContext.removeParameter();
         }
