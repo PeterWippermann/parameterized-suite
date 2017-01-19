@@ -5,7 +5,9 @@ The format is derived from [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-- Improved JavaDoc to meet new requirements of Java 8
+- Improvement: JavaDoc meets new requirements of Java 8
+- Fix: `ParameterContext.getParameter(MyType.class)` caused a `ClassCastException` for any type but `Object[]`.
+- Feature: New method `ParameterContext.getParameterAsArray()` - use if expected type is expected to be an array of `Object` or if it shall be converted
 
 ## 1.0.0
 - initial version
