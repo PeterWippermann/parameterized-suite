@@ -124,7 +124,7 @@ public class BlockJUnit4ClassRunnerWithParametersUtil {
      * @param description - The {@link Description} will be passed to the {@link Rule}s and
      *        {@link ClassRule}s.
      * @param singleParameter - The parameters will be injected in attributes annotated with
-     *        {@link Parameter} or passed to the constructor otherwise.
+     *        {@link Parameterized.Parameter} or passed to the constructor otherwise.
      * 
      * @see BlockJUnit4ClassRunnerWithParameters#createTest()
      * @see BlockJUnit4ClassRunner#methodBlock(FrameworkMethod)
