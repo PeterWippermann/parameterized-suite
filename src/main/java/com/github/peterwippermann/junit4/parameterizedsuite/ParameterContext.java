@@ -63,7 +63,7 @@ public class ParameterContext {
 	}
 
 	/**
-	 * @return true, if parameter is not null.
+	 * @return true if parameter is not null.
 	 */
 	public static boolean isParameterSet() {
 		return context != null;
