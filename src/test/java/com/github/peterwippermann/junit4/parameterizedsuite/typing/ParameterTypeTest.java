@@ -42,7 +42,7 @@ public class ParameterTypeTest {
 		@Parameters(name = "Single A: {index}-{0}")
 		public static Iterable<String> params() {
 			if (ParameterContext.isParameterSet()) {
-				return Collections.singletonList(ParameterContext.getParameter(String.class));
+				return Collections.singletonList(ParameterContext.getParameter());
 			}
 			return Collections.singletonList( "ignorable" );
 		}
