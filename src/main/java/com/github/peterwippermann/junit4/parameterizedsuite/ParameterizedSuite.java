@@ -94,12 +94,15 @@ public class ParameterizedSuite extends ParentRunner<Runner> {
             return statementWithChildren;
         }
         return BlockJUnit4ClassRunnerWithParametersUtil.buildStatementWithTestRules(statementWithChildren, getTestClass(), getDescription(),
-                currentlyActiveParameter);
+        		getCurrentlyActiveParameter());
     }
 
-//    protected Object[] getCurrentlyActiveParameter() {
-//        return currentlyActiveParameter;
-//    }
+    /**
+     * @return The currently active parameter in a normalized form (i.e. an Array). 
+     */
+    protected Object[] getCurrentlyActiveParameter() {
+        return currentlyActiveParameter;
+    }
 
     /**
      * Builds the {@link Runner}s the same way as in {@link Suite#Suite(RunnerBuilder, Class[])}

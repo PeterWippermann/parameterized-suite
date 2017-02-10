@@ -42,7 +42,10 @@ public final class SuiteForSingleParameter extends Suite {
 				getTestClass(), getDescription(), singleParameter);
 	}
 
-//	protected Object[] getActiveParameter() {
-//		return this.singleParameter;
-//	}
+    /**
+     * @return The currently active parameter in a normalized form (i.e. an Array). 
+     */
+    protected Object[] getCurrentlyActiveParameter() {
+    	return this.singleParameter;
+    }
 }

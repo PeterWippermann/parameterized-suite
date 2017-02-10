@@ -10,8 +10,8 @@ import com.github.peterwippermann.junit4.parameterizedsuite.parameter.Parameter;
  * The type of the parameter is unbound and can also be an {@link Array}. Null
  * is interpreted as "parameter is not set".
  * <p>
- * This implementation is not thread-safe. Concurrent implementations e.g. could
- * use {@link ThreadLocal}.
+ * This implementation is not thread-safe. Concurrent implementations could use
+ * e.g. {@link ThreadLocal}.
  *
  */
 public class ParameterContext {
@@ -23,12 +23,27 @@ public class ParameterContext {
 
 	/**
 	 * Retrieve the stored parameter.
+	 * <p>
+	 * An alternative method to enforce the return type.
 	 * 
 	 * @param parameterClass
 	 *            - Enables type-safety at compile time.
+	 * @see ParameterContext#getParameter()
+	 */
+	public static <P> P getParameter(Class<P> parameterClass) {
+		return getParameter();
+	}
+
+	/**
+	 * Retrieve the stored parameter.
+	 * <p>
+	 * The return type is inferred by the Java compiler. To enforce a certain
+	 * type you can use:
+	 * <code>ParameterContext.&lt;String&gt;getParameter();</code>
+	 * @see ParameterContext#getParameter(Class)
 	 */
 	@SuppressWarnings("unchecked")
-	public static <P> P getParameter(Class<P> parameterClass) {
+	public static <P> P getParameter() {
 		return (P) context.asIs();
 	}
 
