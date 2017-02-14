@@ -84,7 +84,7 @@ Add the following dependency declaration of *parameterized-suite* together with 
 <dependency>
   <groupId>com.github.peterwippermann.junit4</groupId>
   <artifactId>parameterized-suite</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <scope>test</scope>
 </dependency>
 <dependency>
@@ -98,7 +98,7 @@ Add the following dependency declaration of *parameterized-suite* together with 
 ````groovy
 dependencies {
     testCompile 'junit:junit:4.12',
-            'com.github.peterwippermann.junit4:parameterized-suite:1.0.0'
+            'com.github.peterwippermann.junit4:parameterized-suite:1.1.0'
 }
 ```
 
