@@ -100,7 +100,7 @@ dependencies {
     testCompile 'junit:junit:4.12',
             'com.github.peterwippermann.junit4:parameterized-suite:1.1.0'
 }
-```
+````
 
 ## Known issues
 ### Define a name for the @Parameters method in your test cases
