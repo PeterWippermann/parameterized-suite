@@ -75,7 +75,8 @@ public class MyParameterizedTestCase {
 }
 ```
 
-You can find a fully working example in the tests of this project: [ExampleParameterizedSuite](https://github.com/PeterWippermann/parameterized-suite/blob/master/src/test/java/com/github/peterwippermann/junit4/parameterizedsuite/ExampleParameterizedSuite.java)
+You can find a fully working example in the tests of this project: [ExampleParameterizedSuite](https://github.com/PeterWippermann/parameterized-suite/blob/master/src/test/java/com/github/peterwippermann/junit4/parameterizedsuite/ExampleParameterizedSuite.java).  
+Multiple parameterized suites (and non-parameterized) can also be combined by another test suite as [TopLevelNoParametersSuite](https://github.com/PeterWippermann/parameterized-suite/blob/master/src/test/java/com/github/peterwippermann/junit4/parameterizedsuite/multiple_suites/TopLevelNoParametersSuite.java) demonstrates. They won't interfere with each other.
 
 ## Dependency setup
 Add the following dependency declaration of *parameterized-suite* together with *JUnit 4*.
